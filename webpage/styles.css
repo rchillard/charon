@@ -1,0 +1,60 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  color: whitesmoke;
+  font-family: 'Lobster', serif;
+  margin-left: 0;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+button {
+  background-color: black;
+  color: whitesmoke;
+  height: 10%;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  padding: 1rem;
+  width: 25%rem;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* .footer {
+  background: whitesmoke;
+  bottom: 0px;
+  color: black;
+  height: 2rem;
+  position: absolute;
+  text-align: right;
+  width: 100%;
+}
+
+.footer p {
+
+}
+
+.footer img {
+  display: inline;
+  width: 1rem;
+} */
