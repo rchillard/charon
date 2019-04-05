@@ -1,13 +1,18 @@
 // UTILITY FUNCTIONS
-function toggleMode() {
-  offlineDisplay.classList.toggle("hidden")
-  onlineDisplay.classList.toggle("hidden")
+function toggleMode(status) {
+  if (status === "offline") {
+    offlineDisplay.classList.remove("hidden")
+    onlineDisplay.classList.add("hidden")
+  } else {
+    offlineDisplay.classList.remove("hidden")
+    onlineDisplay.classList.add("hidden")
+  }
 }
 
 // EVENT FUNCTIONS
 function handleClick(event) {
   console.log(event)
-  toggleMode()
+  getStatus()
 }
 
 // GATHER ELEMENTS
@@ -28,7 +33,16 @@ function getStatus() {
     })
     .then(function(data) {
       console.log(data);
-      ip.textContent = data;
+      // Need to handle online and offline state here
+      if (data === "offline") {
+        offlineDisplay.classList.remove("hidden")
+        onlineDisplay.classList.add("hidden")
+      } else {
+        offlineDisplay.classList.add("hidden")
+        onlineDisplay.classList.remove("hidden")
+        // Only update ip.textContext if online
+        ip.textContent = data;
+      }
       return data;
     });
 }
