@@ -1,4 +1,4 @@
-const CHARON_API = "http://localhost:3000/api-endpoint";
+const CHARON_API = "http://localhost:3000/dev";
 
 function summonCharon(pass) {
   console.log(pass);

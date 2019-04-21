@@ -11,11 +11,14 @@
       <h1 id="title">Searching the River Styx...</h1>
       <img class="hidden" id="portrait" src="" alt="Portrait of Charon" width="75%">
       <h2 id="status"></h2>
-      <button class="hidden" id="pay"></button>
+      <form class="hidden" id="pay" action="javascript:summonCharon(passphrase.value)">
+        <input type="text" id="passphrase" name="passphrase">
+        <input id="payButton" type="submit" value="Pay the Ferryman">
+      </form>
     </div>
-    <!-- <div class="footer">
-      <p>Schemed up in RCH <img src="assets/rch-labs.ico" alt="RCH Labs Icon"> Labs</p>
-    </div> -->
+    <div class="footer">
+      <p><a href="https://rch.fyi">Dreamed up in <img src="assets/rch-labs.ico" alt="RCH Labs Icon"> Labs</a></p>
+    </div>
   <script src="index.js"></script>
   </body>
 </html>
