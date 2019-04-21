@@ -1,50 +1,57 @@
-// UTILITY FUNCTIONS
-function toggleMode(status) {
+// EVENT FUNCTION
+function handleClick(event) {
+  console.log(event);
+  getStatus();
+}
+
+// UPDATE DISPLAY
+function updatePage(status) {
+  imageDisplay.classList.remove("hidden");
   if (status === "offline") {
-    offlineDisplay.classList.remove("hidden")
-    onlineDisplay.classList.add("hidden")
+    titleDisplay.textContent = "Charon waits at river's edge";
+    imageDisplay.src = "assets/1280px-Gustave_Doré_-_Dante_Alighieri.jpg";
+    buttonDisplay.textContent = "Pay the Ferryman";
+    buttonDisplay.classList.remove("hidden");
+    statusDisplay.textContent = "";
   } else {
-    offlineDisplay.classList.remove("hidden")
-    onlineDisplay.classList.add("hidden")
+    titleDisplay.textContent = "Charon paddles the River Styx";
+    imageDisplay.src = "assets/1200px-Lytovchenko_Olexandr_Kharon.jpg";
+    buttonDisplay.classList.add("hidden");
+    statusDisplay.textContent =
+      "The far shore appears out of the fog at " + status;
   }
 }
 
-// EVENT FUNCTIONS
-function handleClick(event) {
-  console.log(event)
-  getStatus()
+// DETERMINE STATUS
+function getStatus() {
+  try {
+    return fetch(
+      "https://v6k20nym2i.execute-api.us-east-2.amazonaws.com/default/charon"
+    )
+      .then(function(response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        updatePage(data);
+        return data;
+      });
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
 }
 
 // GATHER ELEMENTS
-var offlineDisplay = document.getElementById("offline")
-var onlineDisplay = document.getElementById("online")
-var payButton = document.getElementById("pay")
-var time = document.getElementById("ip");
-payButton.addEventListener("click", handleClick)
+// Assumes only 1 element of each tag type on page
+var titleDisplay = document.getElementById("title");
+var imageDisplay = document.getElementById("portrait");
+var statusDisplay = document.getElementById("status");
+var buttonDisplay = document.getElementById("pay");
 
-// DETERMINE STATUS
-function getStatus() {
-  return fetch(
-    "https://api-endpoint"
-  )
-    .then(function(response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data);
-      // Need to handle online and offline state here
-      if (data === "offline") {
-        offlineDisplay.classList.remove("hidden")
-        onlineDisplay.classList.add("hidden")
-      } else {
-        offlineDisplay.classList.add("hidden")
-        onlineDisplay.classList.remove("hidden")
-        // Only update ip.textContext if online
-        ip.textContent = data;
-      }
-      return data;
-    });
-}
+// Modify elements
+buttonDisplay.addEventListener("click", handleClick);
 
-var ip = getStatus();
+// Call for initial status
+getStatus();
