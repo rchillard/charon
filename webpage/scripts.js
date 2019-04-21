@@ -1,3 +1,5 @@
+const CHARON_API = "https://api-endpoint";
+
 // EVENT FUNCTION
 function handleClick(event) {
   console.log(event);
@@ -25,9 +27,7 @@ function updatePage(status) {
 // DETERMINE STATUS
 function getStatus() {
   try {
-    return fetch(
-      "https://v6k20nym2i.execute-api.us-east-2.amazonaws.com/default/charon"
-    )
+    return fetch(charonAPI)
       .then(function(response) {
         console.log(response);
         return response.json();

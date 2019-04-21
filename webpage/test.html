@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-<body>
+    <body>
+        <img id="myImage" src="assets/1280px-Gustave_Doré_-_Dante_Alighieri.jpg">
 
-<img id="myImage" src="assets/1280px-Gustave_Doré_-_Dante_Alighieri.jpg">
+        <form action="javascript:summonCharon(passphrase.value)">
+            <input type="text" id="passphrase" name="passphrase">
+            <input type="submit">
+        </form>
 
-<script>
-var x = document.getElementById("myImage")
-x.src = "assets/1200px-Lytovchenko_Olexandr_Kharon.jpg";
-</script>
-
-</body>
+        <script type="text/javascript" src="test.js"></script>
+    </body>
 </html>
+<!-- 
+curl -v -X POST \
+  'https://ghlqgi0v77.execute-api.us-east-2.amazonaws.com/prd/charon-status?name=John&city=Seattle' \
+  -H 'content-type: application/json' \
+  -H 'day: Thursday' \
+  -d '{ "time": "evening" }' -->
