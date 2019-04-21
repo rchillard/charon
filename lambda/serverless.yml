@@ -1,9 +1,9 @@
-service: express-test
+service: charon-express
 
 provider:
   name: aws
   runtime: nodejs8.10
-  region: us-east-1
+  region: us-east-2
 
 functions:
   app:
